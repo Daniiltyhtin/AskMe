@@ -1,6 +1,6 @@
 <h1>Questions</h1>
 
-<p><%= link_to 'Question new', questions_new_path %></p>
+<p><%= link_to 'Question new', new_question_path %></p>
 <% @questions.each do |question| %>
 
 <h2><%= question.title %></h2>
@@ -11,6 +11,12 @@
 
 <p>
     <%= question.body %>
+    <br>
+
+    <%= link_to 'Edit', edit_question_path(question) %>
+    <br>
+    <%= link_to 'Destroy', question_path(question), data: {"turbo-method": :delete, confirm: 'Are you sure?'}%>
+    <hr>
 </p>
 
 

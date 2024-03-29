@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :question, only: %i[index new edit create]
+  resources :questions, only: %i[index new edit create update destroy]
   #resources :question, only: [:index, :new, :edit, :create]
   #get '/questions', to: 'questions#index'
 
