@@ -15,7 +15,7 @@ before_action :set_question, only: %i[ show edit update destroy]
     def update
         #@question = Question.find(params[:id])
         if @question.update question_params
-          redirect_to questions_path
+            redirect_to question_path
         else
           render :edit
         end
