@@ -22,9 +22,7 @@
 </article>
 
 
-
-
-
+<%= render 'shared/errors', object: @answer %>
 
 <%= form_with model: [@question, @answer], data:{turbo: false} do |f| %>
   <div class="mb-3 row">
