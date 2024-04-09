@@ -3,17 +3,14 @@ class QuestionsController < ApplicationController
 before_action :set_question, only: %i[ show edit update destroy]
 
     def edit
-        #@question = Question.find(params[:id])
     end
 
     def show
-        #@question = Question.find(params[:id])
     end
 
 
 
     def update
-        #@question = Question.find(params[:id])
         if @question.update question_params
             redirect_to question_path
         else
@@ -22,7 +19,6 @@ before_action :set_question, only: %i[ show edit update destroy]
     end
 
     def destroy
-        #@question = Question.find(params[:id])
         if @question.destroy
             redirect_to questions_path
         else
