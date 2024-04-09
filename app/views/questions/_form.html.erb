@@ -1,3 +1,5 @@
+<%= render 'shared/errors', object: @question %>
+
 <%= form_with model: @question, data:{turbo: false} do |f| %>
   <div class="mb-3 row">
     <div class="col-sm-2 col-form-label">
@@ -19,7 +21,7 @@
     </div>
   </div>
 
-  <%= f.submit "Submit question!", class: 'btn btn-primary' %>
+  <%= f.submit "Submit question!", class: 'btn btn-primary mb-3' %>
 
 <% end %>
 

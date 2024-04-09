@@ -6,12 +6,14 @@ before_action :set_question, only: %i[ show edit update destroy]
     end
 
     def show
+        @answers = @question.answers.build
     end
 
 
 
     def update
         if @question.update question_params
+            flash[:success] = "Question updated"
             redirect_to question_path
         else
           render :edit
@@ -20,6 +22,7 @@ before_action :set_question, only: %i[ show edit update destroy]
 
     def destroy
         if @question.destroy
+            flash[:success] = "Question deleted"
             redirect_to questions_path
         else
             redirect_to questions_path
@@ -37,6 +40,7 @@ before_action :set_question, only: %i[ show edit update destroy]
     def create
         @question = Question.new question_params
         if @question.save
+            flash[:success] = "Question created"
             redirect_to questions_path
         else
             render :new
