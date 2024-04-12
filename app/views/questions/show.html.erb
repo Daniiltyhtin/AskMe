@@ -1,6 +1,6 @@
 <h1 class="mb-4">Show question</h1>
 
-<article class="card mt-3 mb-3">
+<article class="card mb-3 mt-3">
   <div class="card-body">
 
     <h4><%= @question.title %></h2>
@@ -22,6 +22,8 @@
 </article>
 
 
+<h2 class = 'mb-3 mt-5'>Write your answer</h2> 
+
 <%= render 'shared/errors', object: @answer %>
 
 <%= form_with model: [@question, @answer], data:{turbo: false} do |f| %>
@@ -38,3 +40,24 @@
   <%= f.submit "Submit answer!", class: 'btn btn-primary mb-3' %>
 
 <% end %>
+
+<h2 class = 'mb-3 mt-5'>Answers for this question</h2>
+
+<% @answers.each do |answer|%>
+  <article class = 'card text-white bg-secondary mb-3'>
+    <div class = 'card-body'>
+      <section class = 'card-text'>
+        <time datetime="<%= answer.formated_created_at %>">
+          <small><%= answer.formated_created_at %></small>
+        </time>
+        <p class = 'my-2'>
+          <%= answer.body%>
+        </p>
+      </section>
+      <%= link_to 'Delete', question_answer_path(@question, answer), data:{turbo_method: :delete, turbo_confirm:'Are you sure?'}, class: 'btn btn-danger btn-sm'%>
+      <%= link_to 'Edit', edit_question_answer_path(@question, answer), class: 'btn btn-warning btn-sm'%>
+    </div>
+  </article>
+<% end %>
+
+

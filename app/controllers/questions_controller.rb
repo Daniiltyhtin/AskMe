@@ -6,6 +6,7 @@ class QuestionsController < ApplicationController
 
   def show
     @answer = @question.answers.build
+    @answers = Answer.order created_at: :desc
   end
 
   def update

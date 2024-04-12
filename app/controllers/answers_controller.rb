@@ -7,12 +7,30 @@ class AnswersController < ApplicationController
       flash[:success] = 'Answer created'
       redirect_to question_path(@question)
     else
+      @answers = Answer.order created_at: :desc
       render 'questions/show'
     end
   end
 
-  def new
-    @answer = Answer.new
+  def destroy
+    answer = @question.answers.find params[:id]
+    if answer.destroy
+      flash[:success] = 'Answer deleted'
+      redirect_to question_path(@question)
+    else
+      flash[:error] = 'Something went wrong'
+    end
+  end
+
+  def edit
+    @answer = Answer.find(params[:id])
+  end
+
+  def update
+    @answer = Answer.find(params[:id])
+    if @answer.update answer_params
+      redirect_to question_path(@question)
+    end
   end
 
   private
