@@ -6,6 +6,7 @@ module ApplicationHelper
 
     options[:class] = if options[:class]
                         options[:class] + ' ' + css_class
+                        # "#{options[:class]} #{css_class}"
                       else
                         css_class
                       end
