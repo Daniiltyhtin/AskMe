@@ -12,9 +12,9 @@
       <time datetime="<%= @question.formated_created_at %>">
         <small><%= @question.formated_created_at %></small>
       </time>
-      <p class="my-2">
-        <%= @question.body %>
-      </p>
+      <div class="my-2">
+        <%= sanitize @question.body %>
+      </div>
     </section>
 
     <%= link_to 'Back', questions_path(@question), class: 'btn btn-warning' %> 
@@ -25,27 +25,21 @@
 </article>
 
 
-<h2 class = 'mb-3 mt-5'>Write your answer</h2> 
-
+<h2 class = 'mb-3 mt-5'>Write your answer</h2>
+ 
 <%= render 'answers/form'%>
 
 <h2 class = 'mb-3 mt-5'>Answers for this question</h2>
 
-<% @answers.each do |answer|%>
-  <article class = 'card text-white bg-secondary mb-3'>
-    <div class = 'card-body'>
-      <section class = 'card-text'>
-        <time datetime="<%= answer.formated_created_at %>">
-          <small><%= answer.formated_created_at %></small>
-        </time>
-        <p class = 'my-2'>
-          <%= answer.body%>
-        </p>
-      </section>
-      <%= link_to 'Delete', question_answer_path(@question, answer), data:{turbo_method: :delete, turbo_confirm:'Are you sure?'}, class: 'btn btn-danger btn-sm'%>
-      <%= link_to 'Edit', edit_question_answer_path(@question, answer), class: 'btn btn-warning btn-sm'%>
-    </div>
-  </article>
-<% end %>
+<%= paginate @answers%>
+<%= render partial: 'answers/answer', collection: @answers, 
+  as: :answer, locals: {question: @question}%>
+<%= paginate @answers%>
 
-
+  <%# обязательно указать то это паршал и указать путь
+    колеция для того, чтобы все отображалось по очереди
+    as для того, чтобы указать название элементов в коллекции
+    так же для того чтобы не было ошибок в других элементах программы при вызове
+    делаем из question локальную переменную и задаем ей значение 
+    с помощью метода locals
+    не забывать "=" после скобки %>

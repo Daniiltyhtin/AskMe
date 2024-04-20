@@ -7,3 +7,12 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+30.times do
+  title = Faker::Hipster.sentence(word_count: 5)
+  body = ''
+  8.times do
+    body += Faker::Hipster.sentence(word_count: 5) + ' '
+  end
+
+  Question.create title: title, body: body
+end
