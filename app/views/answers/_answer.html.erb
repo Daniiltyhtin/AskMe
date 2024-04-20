@@ -1,14 +1,16 @@
-<article class = 'card text-white bg-secondary mb-3', id="answer-<%= answer.id%>">
-  <div class = 'card-body'>
-    <section class = 'card-text'>
-      <time datetime="<%= answer.formated_created_at %>">
-        <small><%= answer.formated_created_at %></small>
-      </time>
-      <div class = 'my-2'>
-        <%= sanitize answer.body%>
-      </div>
-    </section>
-    <%= link_to 'Delete', question_answer_path(question, answer), data:{turbo_method: :delete, turbo_confirm:'Are you sure?'}, class: 'btn btn-danger btn-sm'%>
-    <%= link_to 'Edit', edit_question_answer_path(question, answer), class: 'btn btn-warning btn-sm'%>
-  </div>
-</article>
+<%= tag.article class: 'card text-white bg-secondary mb-3', id: dom_id(answer) do %>
+  <%# <article class = 'card text-white bg-secondary mb-3', id="answer-<%= answer.id%> <%# ">%>
+    <div class = 'card-body'>
+      <section class = 'card-text'>
+        <time datetime="<%= answer.formated_created_at %>">
+          <small><%= answer.formated_created_at %></small>
+        </time>
+        <div class = 'my-2'>
+          <%= sanitize answer.body%>
+        </div>
+      </section>
+      <%= link_to 'Delete', question_answer_path(question, answer), data:{turbo_method: :delete, turbo_confirm:'Are you sure?'}, class: 'btn btn-danger btn-sm'%>
+      <%= link_to 'Edit', edit_question_answer_path(question, answer), class: 'btn btn-warning btn-sm'%>
+    </div>
+  </article>
+<% end %>
