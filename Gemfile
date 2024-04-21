@@ -13,7 +13,7 @@ gem 'simple_form'
 
 gem 'bootstrap'
 # гем для вывода определенного числа объектов на странице(смотри questions/index and questions_controller)
-gem 'kaminari'
+gem 'pagy', '~> 8.2'
 
 gem 'jquery-rails'
 

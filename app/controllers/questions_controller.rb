@@ -6,8 +6,10 @@ class QuestionsController < ApplicationController
 
   def show
     @answer = @question.answers.build
-    @answers = @question.answers.order(created_at: :desc).page(params[:page])
-    #@answers = Answer.where(question: @question).order created_ad: :desc
+    @pagy, @answers = pagy(@question.answers.order(created_at: :desc), request_path: question_path)
+
+    # @answers = @question.answers.order(created_at: :desc).page(params[:page])
+    # @answers = Answer.where(question: @question).order created_ad: :desc
   end
 
   def update
@@ -29,7 +31,8 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    @questions = Question.order(created_at: :desc).page params[:page]
+    @pagy, @questions = pagy(Question.order(created_at: :desc))
+    # @questions = Question.order(created_at: :desc).page params[:page]
   end
 
   def new

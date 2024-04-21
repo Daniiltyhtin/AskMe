@@ -26,15 +26,16 @@
 
 
 <h2 class = 'mb-3 mt-5'>Write your answer</h2>
- 
+
 <%= render 'answers/form'%>
 
 <h2 class = 'mb-3 mt-5'>Answers for this question</h2>
 
-<%= paginate @answers%>
+
+<%#== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
 <%= render partial: 'answers/answer', collection: @answers, 
   as: :answer, locals: {question: @question}%>
-<%= paginate @answers%>
+<%#== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
 
   <%# обязательно указать то это паршал и указать путь
     колеция для того, чтобы все отображалось по очереди
