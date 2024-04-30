@@ -20,6 +20,8 @@ gem 'dartsass-sprockets'
 
 gem 'cssbundling-rails'
 
+gem 'draper'
+
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 
