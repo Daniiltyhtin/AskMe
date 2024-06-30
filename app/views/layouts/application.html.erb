@@ -8,7 +8,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", media: 'all', "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "style", media: 'all', "data-turbo-track": "reload" %>
+    <%# <%= stylesheet_link_tag "style", media: 'all', "data-turbo-track": "reload" %>
     
     <%= javascript_importmap_tags %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
@@ -19,7 +19,7 @@
     <%= yield :main_menu %>
     <main class = "container mt-3">
       <% flash.each do |k, v|%>
-        <%# <div class = "alert alert-<%= k %> <%# "> %>
+        <%# <div class = "alert alert-<%= k %> <%# ">
         <%#  <%= v %>
         <%#</div>%>
         <%= tag.div v, class: "alert alert-#{k}", role: "alert"%>
